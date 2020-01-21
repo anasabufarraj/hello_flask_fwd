@@ -1,2 +1,2 @@
-# hello_flask_fwd
+# Flask Application
 Learning Flask web development.
