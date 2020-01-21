@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Hello!{% endblock %}
+
+{% block page_content %}
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ message }}
+        </div>
+    {% endfor %}
+    <div class="page-header">
+        {% if current_user.is_authenticated %}
+            <h1>Hello!</h1>
+            <p>Welcome back <b>{{ current_user.username }}</b>! <a href="{{ url_for('auth.logout') }}">Log Out</a></p>
+            <ul>
+                <li><a href="{{ url_for('auth.change_password') }}">Change Password</a></li>
+            </ul>
+        {% else %}
+            <h1>Hello!</h1>
+            <p>Welcome to Flask app! <a href="{{ url_for('auth.login') }}">Log In</a>.</p>
+        {% endif %}
+    </div>
+{% endblock %}

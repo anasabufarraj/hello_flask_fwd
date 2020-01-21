@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Flask - Login{% endblock %}
+
+{% block page_content %}
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+             {{ message }}
+        </div>
+    {% endfor %}
+    <div class="page-header">
+        <h1>Login</h1>
+    </div>
+    <div class="col-md-4">
+        <form novalidate method="post">
+            {{ wtf.quick_form(form) }}
+            <br>
+            <p>Forgot your password? <a href="{{ url_for('auth.password_reset_request') }}">Reset</a>.</p>
+            <p>Not registered? <a href="{{ url_for('auth.register') }}">Sign up</a>.</p>
+        </form>
+    </div>
+{% endblock %}

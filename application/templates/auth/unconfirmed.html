@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Flask - Unconfirmed!{% endblock %}
+
+{% block page_content %}
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ message }}
+        </div>
+    {% endfor %}
+    <div class="page-header">
+        <h1>Hello!</h1>
+        <h4>You have not confirmed your account yet!</h4>
+        <p>Before you can access, you need to confirm your account.<br>
+            Check your email inbox for email with a confirmation link.</p>
+        <p>Resend Confirmation? <a href="{{ url_for('auth.resend_confirmation') }}">Click Here</a>.</p>
+    </div>
+{% endblock %}
